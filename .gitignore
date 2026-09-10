@@ -1,0 +1,17 @@
+
+# AWS Ansible Lab
+*.pem
+*.ppk
+.env
+.env.*
+*.log
+
+# AWS credentials / local secrets
+.aws/
+credentials
+
+# Ansible temporary/retry files
+*.retry
+
+# Local raw evidence
+infrastructure/aws-ansible-lab/evidence/raw/
