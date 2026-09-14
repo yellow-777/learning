@@ -15,3 +15,6 @@ credentials
 
 # Local raw evidence
 infrastructure/aws-ansible-lab/evidence/raw/
+
+# AWS Ansible Lab local inventory
+infrastructure/aws-ansible-lab/ansible/inventory.ini

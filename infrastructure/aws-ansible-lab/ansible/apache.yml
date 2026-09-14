@@ -1,0 +1,40 @@
+---
+- name: Configure Apache web server
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    - name: Enable and start Apache
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Deploy test page
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <title>AWS Ansible Lab</title>
+          </head>
+          <body>
+            <h1>AWS Ansible Lab</h1>
+            <p>Apache deployed by Ansible.</p>
+          </body>
+          </html>
+
+    - name: Verify Apache locally
+      ansible.builtin.uri:
+        url: http://127.0.0.1/
+        status_code: 200
